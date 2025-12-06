@@ -9,20 +9,22 @@ public class MouseLook : MonoBehaviour
     public float tiltAmount = 5f;
     public float tiltStartSpeed;
     public float tiltEndSpeed;
-    private float currentTilt = 0f;
-    private float targetTilt = 0f;
+    private float horCurrentTilt = 0f;
+    private float horTargetTilt = 0f;
+    private float verCurrentTilt = 0f;
+    private float verTargetTilt = 0f;
+    
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
-        
     }
     void Update()
     {
         CameraRotate();
         HorCameraTilt();
+        VerCameraTilt();
     }
 
     private void CameraRotate()
@@ -33,30 +35,27 @@ public class MouseLook : MonoBehaviour
         _xRotation -= mouseY; 
         _xRotation = Mathf.Clamp(_xRotation, -90, 90);
         
-        transform.localRotation = Quaternion.Euler(_xRotation, 0f, currentTilt); 
+        transform.localRotation = Quaternion.Euler(_xRotation + verCurrentTilt, 0f, horCurrentTilt); 
         playerBody.Rotate(Vector3.up * mouseX);
     }
     private void HorCameraTilt()
     {
-        //bool leftStrafe = Input.GetKey(KeyCode.A);
-        //bool rightStrafe = Input.GetKey(KeyCode.D);
-
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            targetTilt = -tiltAmount;
+            horTargetTilt = -tiltAmount;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            targetTilt = tiltAmount;
+            horTargetTilt = tiltAmount;
         }
         else
         {
-            targetTilt = 0f;
+            horTargetTilt = 0f;
         }
 
         float smoothTilt;
 
-        if (targetTilt == 0)
+        if (horTargetTilt == 0)
         {
             smoothTilt = tiltEndSpeed;
         }
@@ -65,7 +64,36 @@ public class MouseLook : MonoBehaviour
             smoothTilt = tiltStartSpeed;
         }
 
-        currentTilt = Mathf.Lerp(currentTilt, targetTilt, smoothTilt * Time.deltaTime);
+        horCurrentTilt = Mathf.Lerp(horCurrentTilt, horTargetTilt, smoothTilt * Time.deltaTime);
+    }
+    
+    private void VerCameraTilt()
+    {
+        if (Input.GetAxisRaw("Vertical") > 0)
+        {
+            verTargetTilt = tiltAmount;
+        }
+        else if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            verTargetTilt = -tiltAmount;
+        }
+        else
+        {
+            verTargetTilt = 0f;
+        }
+
+        float smoothTilt;
+
+        if (verTargetTilt == 0)
+        {
+            smoothTilt = tiltEndSpeed;
+        }
+        else
+        {
+            smoothTilt = tiltStartSpeed;
+        }
+
+        verCurrentTilt = Mathf.Lerp(verCurrentTilt, verTargetTilt, smoothTilt * Time.deltaTime);
     }
     
 }
