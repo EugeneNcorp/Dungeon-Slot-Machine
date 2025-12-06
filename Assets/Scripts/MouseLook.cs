@@ -42,11 +42,11 @@ public class MouseLook : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            horTargetTilt = -tiltAmount;
+            horTargetTilt = tiltAmount;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            horTargetTilt = tiltAmount;
+            horTargetTilt = -tiltAmount;
         }
         else
         {
