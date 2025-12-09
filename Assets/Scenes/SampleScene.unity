@@ -350,8 +350,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.655, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5739999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -628,8 +628,8 @@ Transform:
   m_GameObject: {fileID: 488850721}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.24, z: 0}
+  m_LocalScale: {x: 0.9165356, y: 1.3496903, z: 0.9165356}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2090354232}
@@ -712,8 +712,8 @@ Transform:
   m_GameObject: {fileID: 894910859}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.984, y: -0.3262, z: 4.17}
-  m_LocalScale: {x: 1.8718116, y: 2.5868123, z: 1}
+  m_LocalPosition: {x: -1.5295, y: 0.1215, z: 4.17}
+  m_LocalScale: {x: 2.780782, y: 3.482543, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 267220331}
@@ -735,7 +735,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 2090354232}
   - component: {fileID: 2090354231}
   - component: {fileID: 2090354233}
+  - component: {fileID: 2090354234}
   m_Layer: 0
   m_Name: $Player
   m_TagString: Untagged
@@ -860,7 +861,7 @@ Transform:
   m_GameObject: {fileID: 2090354230}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.94, z: 0}
+  m_LocalPosition: {x: 0, y: 1.618, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -882,6 +883,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 10
   controller: {fileID: 2090354231}
+--- !u!114 &2090354234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090354230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da4a705c38073f66a8e1264c2ed2057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeadBobController
+  enable: 1
+  amplitude: 0.015
+  frequency: 10
+  camera: {fileID: 330585546}
+  cameraHolder: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
