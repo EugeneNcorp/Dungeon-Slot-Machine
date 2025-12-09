@@ -8,7 +8,7 @@ public class HeadBobController : MonoBehaviour
     [SerializeField, Range(0, 30)] private float frequency = 10.0f;
 
     [SerializeField] private Transform camera = null;
-    [SerializeField] private Transform cameraHolder = null;
+ 
 
     private float _toggleSpeed = 3.0f;
     private Vector3 _startPos;
@@ -29,7 +29,7 @@ public class HeadBobController : MonoBehaviour
 
         CheckMotion();
         ResetPosition();
-        camera.LookAt(FocusTarget());
+ 
 
     }
 
@@ -66,13 +66,6 @@ public class HeadBobController : MonoBehaviour
             return;
         }
 
-        camera.localPosition = Vector3.Lerp(camera.localPosition, _startPos, 1 * Time.deltaTime);
-    }
-
-    private Vector3 FocusTarget()
-    {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + cameraHolder.localPosition.y, transform.position.z);
-        pos += cameraHolder.forward * 15.0f;
-        return pos;
+        camera.localPosition = Vector3.Lerp(camera.localPosition, _startPos, 5 * Time.deltaTime);
     }
 }
