@@ -30,12 +30,12 @@
 
 .dockHeader
 {
-	background-color: rgba(156, 54, 54, 1);
+	background-color: rgba(152, 56, 56, 1);
 }
 
 .TV LineBold
 {
-	background-color: rgba(156, 54, 54, 1);
+	background-color: rgba(152, 56, 56, 1);
 }
 
 .ToolbarDropDownToogleRight
@@ -105,60 +105,60 @@
 
 .AppCommandLeft
 {
-	background-color: rgba(125, 38, 38, 1);
+	background-color: rgba(181, 78, 78, 1);
 }
 
 .AppCommandMid
 {
-	background-color: rgba(125, 38, 38, 1);
+	background-color: rgba(181, 78, 78, 1);
 }
 
 .AppCommand
 {
-	background-color: rgba(125, 38, 38, 1);
+	background-color: rgba(181, 78, 78, 1);
 }
 
 .AppToolbarButtonLeft
 {
-	background-color: rgba(125, 38, 38, 1);
+	background-color: rgba(181, 78, 78, 1);
 }
 
 .AppToolbarButtonRight
 {
-	background-color: rgba(125, 38, 38, 1);
+	background-color: rgba(181, 78, 78, 1);
 }
 
 .DropDown
 {
-	background-color: rgba(125, 38, 38, 1);
+	background-color: rgba(181, 78, 78, 1);
 }
 
 .SceneTopBarBg
 {
-	background-color: rgba(81, 81, 81, 1);
+	background-color: rgba(83, 41, 52, 1);
 }
 
 .MiniPopup
 {
-	background-color: rgba(81, 81, 81, 1);
+	background-color: rgba(83, 41, 52, 1);
 }
 
 .TV Selection
 {
-	background-color: rgba(81, 81, 81, 1);
+	background-color: rgba(83, 41, 52, 1);
 }
 
 .ExposablePopupMenu
 {
-	background-color: rgba(81, 81, 81, 1);
+	background-color: rgba(83, 41, 52, 1);
 }
 
 .minibutton
 {
-	background-color: rgba(81, 81, 81, 1);
+	background-color: rgba(83, 41, 52, 1);
 }
 
 . ToolbarSearchTextField
 {
-	background-color: rgba(81, 81, 81, 1);
+	background-color: rgba(83, 41, 52, 1);
 }

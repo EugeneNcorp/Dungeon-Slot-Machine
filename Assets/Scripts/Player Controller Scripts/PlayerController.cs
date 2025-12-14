@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 12.0f;
-
+    public int test;
     public CharacterController controller;
 
     void Update()
