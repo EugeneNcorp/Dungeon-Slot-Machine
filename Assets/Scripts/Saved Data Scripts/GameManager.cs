@@ -5,6 +5,18 @@ using UnityEngine;
         public Player player;
         private GameData _currentData = new();
 
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                SaveGame();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                LoadGame();
+            }
+        }
         public void SaveGame()
         {
             _currentData.playerData = player.ToData();

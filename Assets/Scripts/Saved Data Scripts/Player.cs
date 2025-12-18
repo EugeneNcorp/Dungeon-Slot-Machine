@@ -19,9 +19,21 @@ public class Player : MonoBehaviour
 
   public void FromData(PlayerData data)
   {
+    CharacterController cc = GetComponent<CharacterController>();
+
+    if (cc != null)
+    {
+      cc.enabled = false;
+    }
+    
     playerName = data.name;
     playerHealth = data.health;
     playerLevel = data.level;
     transform.position = data.playerPos;
+    
+    if (cc != null)
+    {
+      cc.enabled = true;
+    }
   }
 }
