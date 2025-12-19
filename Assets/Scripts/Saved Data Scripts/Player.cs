@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
   public string playerName;
   public float playerHealth = 100.0f;
   public int playerLevel = 1;
+
+  public int moneyCount = 0;
   
   public PlayerData ToData()
   {
@@ -35,5 +37,10 @@ public class Player : MonoBehaviour
     {
       cc.enabled = true;
     }
+  }
+
+  public void AddMoney(int value)
+  {
+    moneyCount += value;
   }
 }
