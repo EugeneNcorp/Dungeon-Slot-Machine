@@ -67,6 +67,8 @@ public class MachineControl : MonoBehaviour
         }
     }
 
+    
+    //this method gives prizes
     private void CheckResults()
     {
         if (rows[0].stoppedSlot == "Diamond" && rows[1].stoppedSlot == "Diamond" && rows[2].stoppedSlot == "Diamond")
@@ -92,26 +94,26 @@ public class MachineControl : MonoBehaviour
 
         else if (rows[0].stoppedSlot == "Spades" && rows[1].stoppedSlot == "Spades" && rows[2].stoppedSlot == "Spades")
         {
-            CreateCoin(5);
+            CreateCoin(10);
         }
 
         else if (rows[0].stoppedSlot == "Crown" && rows[1].stoppedSlot == "Crown" && rows[2].stoppedSlot == "Crown")
         {
-            CreateCoin(5);
+            CreateCoin(10);
         }
 
         else if (rows[0].stoppedSlot == "Clubs" && rows[1].stoppedSlot == "Clubs" && rows[2].stoppedSlot == "Clubs")
         {
-            CreateCoin(5);
+            CreateCoin(10);
         }
 
         else if (rows[0].stoppedColor == "Black" && rows[1].stoppedColor == "Black" && rows[2].stoppedColor == "Black")
         {
-            CreateCoin(2);
+            CreateCoin(3);
         }
         else if (rows[0].stoppedColor == "Red" && rows[1].stoppedColor == "Red" && rows[2].stoppedColor == "Red")
         {
-            CreateCoin(2);
+            CreateCoin(3);
         }
         else
         {
