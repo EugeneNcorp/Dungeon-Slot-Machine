@@ -11,34 +11,38 @@ public class MachineControl : MonoBehaviour
 
     [SerializeField] private GameObject Handle1;
     [SerializeField] private GameObject Handle2;
-    // public Transform handle;
-
-    private int prizeValue;
+    [SerializeField] private Player player;
+    [SerializeField] private GameObject coin;
 
     private bool resultsChecked = false;
-    
-void Update()
+
+    void Update()
     {
         if (!rows[0].rowStopped || !rows[1].rowStopped || !rows[2].rowStopped)
         {
-            prizeValue = 0;
-            resultsChecked = true;
+            resultsChecked = false;
         }
-        
+
         if (rows[0].rowStopped && rows[1].rowStopped && rows[2].rowStopped && !resultsChecked)
         {
             CheckResults();
-            Debug.Log($"Prize: {prizeValue}");
+            //Debug.Log($"Prize: {prizeValue}");
 
         }
 
-        
+
     }
+
     private void OnMouseDown()
     {
         if (rows[0].rowStopped && rows[1].rowStopped && rows[2].rowStopped)
         {
-            StartCoroutine("PullHandle");
+            if (player.moneyCount > 0)
+            {
+                StartCoroutine("PullHandle");
+                player.AddMoney(-1);
+            }
+
         }
     }
 
@@ -53,7 +57,7 @@ void Update()
         }
 
         HandlePulled();
-        
+
         //Rotate the handle back
         for (int i = 0; i < 15; i += 5)
         {
@@ -65,18 +69,65 @@ void Update()
 
     private void CheckResults()
     {
-        if (rows[0].stoppedSlot == "Diamond" && rows[2].stoppedSlot == "Diamond" && rows[3].stoppedSlot == "Diamond")
+        if (rows[0].stoppedSlot == "Diamond" && rows[1].stoppedSlot == "Diamond" && rows[2].stoppedSlot == "Diamond")
         {
-            prizeValue = 200;
+            CreateCoin(10);
         }
-        
-        //Here must be all results
+
+        else if (rows[0].stoppedSlot == "Bell" && rows[1].stoppedSlot == "Bell" && rows[2].stoppedSlot == "Bell")
+        {
+            CreateCoin(10);
+        }
+
+        else if (rows[0].stoppedSlot == "Hearts" && rows[1].stoppedSlot == "Hearts" && rows[2].stoppedSlot == "Hearts")
+        {
+            CreateCoin(10);
+        }
+
+        else if (rows[0].stoppedSlot == "Diamond" && rows[1].stoppedSlot == "Diamond" &&
+                 rows[2].stoppedSlot == "Diamond")
+        {
+            CreateCoin(10);
+        }
+
+        else if (rows[0].stoppedSlot == "Spades" && rows[1].stoppedSlot == "Spades" && rows[2].stoppedSlot == "Spades")
+        {
+            CreateCoin(5);
+        }
+
+        else if (rows[0].stoppedSlot == "Crown" && rows[1].stoppedSlot == "Crown" && rows[2].stoppedSlot == "Crown")
+        {
+            CreateCoin(5);
+        }
+
+        else if (rows[0].stoppedSlot == "Clubs" && rows[1].stoppedSlot == "Clubs" && rows[2].stoppedSlot == "Clubs")
+        {
+            CreateCoin(5);
+        }
+
+        else if (rows[0].stoppedColor == "Black" && rows[1].stoppedColor == "Black" && rows[2].stoppedColor == "Black")
+        {
+            CreateCoin(2);
+        }
+        else if (rows[0].stoppedColor == "Red" && rows[1].stoppedColor == "Red" && rows[2].stoppedColor == "Red")
+        {
+            CreateCoin(2);
+        }
         else
         {
-            prizeValue = 0;
+            CreateCoin(0);
         }
 
         resultsChecked = true;
+    }
+
+    private void CreateCoin(int value)
+    {
+        for (int i = 0; i < value; i++)
+        {
+            Instantiate(coin, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - 15f), Quaternion.identity);
+        }
+        
     }
 
 }
