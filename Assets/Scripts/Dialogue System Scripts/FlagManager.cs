@@ -15,7 +15,16 @@ public class FlagManager : MonoBehaviour
         {
             return;
         }
-
         _flags.Add(flag);
+    }
+    
+    public void RemoveFlag(string flag)
+    {
+        if (string.IsNullOrEmpty(flag))
+        {
+            return;
+        }
+
+        _flags.Remove(flag);
     }
 }

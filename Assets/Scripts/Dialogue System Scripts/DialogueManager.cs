@@ -8,15 +8,42 @@ public class DialogueManager : MonoBehaviour
     public DialogueDataBase dataBase;
     public FlagManager flagManager;
     public string startNodeId;
-
+    public Player player;
+    public DialogueUI dUI;
+    
+    public MouseLook cameraCon;
+    public GameObject crosshair;
     public delegate void DialogueUpdated(string speakerName, string dialogueText, List<DialogueChoice> choices);
 
     public event DialogueUpdated OnDialogueUpdated;
+    public event System.Action OnDialogueEnded;
 
     private DialogueNode _currentDialogueNode;
 
     private void Start()
     {
+        // GoToNode(startNodeId);
+    }
+
+    void Awake()
+    {
+        
+      
+        OnDialogueUpdated += dUI.UpdateUI;
+        OnDialogueEnded += dUI.Hide;
+      
+        gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        OnDialogueUpdated -= dUI.UpdateUI;
+        OnDialogueEnded -= dUI.Hide;
+    }
+    
+    public void StartDialogue(DialogueDataBase database, string startNodeId)
+    {
+        dataBase = database;
         GoToNode(startNodeId);
     }
 
@@ -26,11 +53,30 @@ public class DialogueManager : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
+    private void EndDialogue()
+    {
+        if (cameraCon != null)
+        {
+            cameraCon.canLook = true;
+        }
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
+        crosshair.SetActive(true);
+        
+        _currentDialogueNode = null;
+        OnDialogueEnded?.Invoke();
+        
+        
+    }
+    
+
     private bool IsChoiceAvailable(DialogueChoice choice)
     {
         foreach (var required in choice.RequiredFlags)
         {
-            if (flagManager.HasFlags(required))
+            if (!flagManager.HasFlags(required))
             {
                 return false;
             }
@@ -71,13 +117,29 @@ public class DialogueManager : MonoBehaviour
             flagManager.AddFlag(flag);
         }
 
+        if (player != null)
+        {
+            player.AddMoney(choice.Money);
+            player.AddHealth(choice.Health);
+        }
+        
+        if (choice.CloseDialogue)
+        {
+            EndDialogue();
+            return;
+        }
+
         if (choice.ReloadScene)
         {
             ReloadScene();
             return;
         }
 
-        GoToNode(choice.NextNodeId);
+        //GoToNode(choice.NextNodeId);
+        
+        string dialogueText = ProcessText(_currentDialogueNode.DialogueText);
+        var filteredChoices = FilterChoices(_currentDialogueNode.Choices);
+        dUI?.UpdateUI(_currentDialogueNode.SpeakerName, dialogueText, filteredChoices);
     }
 
     public void GoToNode(string nodeId)
@@ -86,12 +148,35 @@ public class DialogueManager : MonoBehaviour
 
         if (_currentDialogueNode == null)
         {
-            OnDialogueUpdated?.Invoke("", "[Dialogue Ended]", null);
+            EndDialogue();
             return;
         }
 
+        var text = ProcessText(_currentDialogueNode.DialogueText);
         var filtered = FilterChoices(_currentDialogueNode.Choices);
 
-        OnDialogueUpdated?.Invoke(_currentDialogueNode.SpeakerName,_currentDialogueNode.DialogueText, filtered);
+        //Open the UI panel
+        dUI.gameObject.SetActive(true);
+
+        if (cameraCon != null)
+        {
+            cameraCon.canLook = false;
+            crosshair.SetActive(false);
+        }
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
+        OnDialogueUpdated?.Invoke(_currentDialogueNode.SpeakerName, text, filtered);
+    }
+
+    private string ProcessText(string text)
+    {
+        if (player == null)
+        {
+            return text;
+        }
+
+        return text.Replace("{hp}", player.playerHealth.ToString()).Replace("{money}", player.moneyCount.ToString());
     }
 }

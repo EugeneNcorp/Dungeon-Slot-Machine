@@ -14,6 +14,7 @@ public class MouseLook : MonoBehaviour
     private float verCurrentTilt = 0f;
     private float verTargetTilt = 0f;
     
+    public bool canLook = true;
 
     void Start()
     {
@@ -22,6 +23,10 @@ public class MouseLook : MonoBehaviour
     }
     void Update()
     {
+        if (!canLook)
+        {
+            return;
+        }
         CameraRotate();
         HorCameraTilt();
         VerCameraTilt();
