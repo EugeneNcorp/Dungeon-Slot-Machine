@@ -14,6 +14,7 @@ public class DialogueDataBase: ScriptableObject
             return;
         }
 
+        _lookUp = new Dictionary<string, DialogueNode>();
         foreach (var node in Nodes)
         {
             _lookUp.Add(node.NodeId, node);

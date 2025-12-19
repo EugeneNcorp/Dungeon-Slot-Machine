@@ -28,6 +28,11 @@ public class DialogueChoice
     [Header("Flow")]
     public string NextNodeId;
     public bool ReloadScene;
+    public bool CloseDialogue;
+    [Header("Stats")] 
+    public int Health;
+    public int Money;
+    
 
     [Header("Conditions")] 
     public List<string> RequiredFlags = new List<string>();

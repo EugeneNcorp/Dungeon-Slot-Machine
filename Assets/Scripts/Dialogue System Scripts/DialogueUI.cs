@@ -10,18 +10,37 @@ public class DialogueUI : MonoBehaviour
    public List<Button> Buttons;
    public List<TextMeshProUGUI> ButtonLabels;
    
+   
    private void OnEnable()
    {
-      DM.OnDialogueUpdated += UpdateUI;
+      DM = FindFirstObjectByType<DialogueManager>();
+            
+      if (DM != null)
+      {
+         DM.OnDialogueUpdated += UpdateUI;
+         DM.OnDialogueEnded += Hide;
+      }
    }
 
    private void OnDisable()
    {
-      DM.OnDialogueUpdated -= UpdateUI;
+      if (DM != null)
+      {
+         DM.OnDialogueUpdated -= UpdateUI;
+         DM.OnDialogueEnded -= Hide;
+      }
    }
 
-   private void UpdateUI(string speaker, string dialogue, List<DialogueChoice> choices)
+   public void Hide()
    {
+      gameObject.SetActive(false);
+   }
+
+   public void UpdateUI(string speaker, string dialogue, List<DialogueChoice> choices)
+   {
+      
+      
+      
       SpeakerTextDisplay.text = speaker;
       DialogueTextDisplay.text = dialogue;
 
