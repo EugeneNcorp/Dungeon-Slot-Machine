@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf2e0c0d731f80d99246a013685f01, type: 3}
+  m_Name: Healer_Dialogue_List
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueDataBase
+  Nodes:
+  - {fileID: 11400000, guid: 4a21a6c7b1ec30b3386bab08cb153dc9, type: 2}
+  - {fileID: 11400000, guid: e52700fec4c2faf2081ecebfecd37139, type: 2}
+  - {fileID: 11400000, guid: 88a1f3c1a0674d6d182bfb0a9c225419, type: 2}
+  - {fileID: 11400000, guid: e8ad758b48fb7ef2284c9cc46f91ce95, type: 2}
+  - {fileID: 11400000, guid: d0c910c8aafdb037a920ff03a9315914, type: 2}
+  - {fileID: 11400000, guid: 83473d8ade7cacdbda9dbd0e872c28e3, type: 2}
+  - {fileID: 11400000, guid: 817bd3979c8d2356a9c4de2765efce42, type: 2}
