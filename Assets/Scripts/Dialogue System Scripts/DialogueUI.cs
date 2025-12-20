@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DialogueUI : MonoBehaviour
 {
    public DialogueManager DM;
+   public GameObject dPanel;
    public TextMeshProUGUI SpeakerTextDisplay;
    public TextMeshProUGUI DialogueTextDisplay;
    public List<Button> Buttons;
@@ -33,19 +34,21 @@ public class DialogueUI : MonoBehaviour
 
    public void Hide()
    {
-      gameObject.SetActive(false);
+      dPanel.SetActive(false);
    }
 
    public void UpdateUI(string speaker, string dialogue, List<DialogueChoice> choices)
    {
-      
-      
+      dPanel.SetActive(true);
       
       SpeakerTextDisplay.text = speaker;
       DialogueTextDisplay.text = dialogue;
 
       for (int i = 0; i < Buttons.Count; i++)
       {
+         //Remove buttons click listener after pressing it
+         Buttons[i].onClick.RemoveAllListeners();
+         
          if (i < choices.Count)
          {
             Buttons[i].gameObject.SetActive(true);

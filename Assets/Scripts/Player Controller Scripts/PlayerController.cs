@@ -7,12 +7,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        Vector3 moveNormal = move * speed * Time.deltaTime;
-        controller.Move(moveNormal);
+        if (controller.enabled)
+        {
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+            
+            Vector3 move = transform.right * x + transform.forward * z;
+            
+            Vector3 moveNormal = move * speed * Time.deltaTime;
+            controller.Move(moveNormal);
+        }
     }
 }

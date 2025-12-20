@@ -7,12 +7,12 @@ public class DialogueManager : MonoBehaviour
     [Header("Data")] 
     public DialogueDataBase dataBase;
     public FlagManager flagManager;
-    public string startNodeId;
     public Player player;
-    public DialogueUI dUI;
+    public GameManager GM;
+    public string startNodeId;
     
-    public MouseLook cameraCon;
-    public GameObject crosshair;
+    
+
     public delegate void DialogueUpdated(string speakerName, string dialogueText, List<DialogueChoice> choices);
 
     public event DialogueUpdated OnDialogueUpdated;
@@ -24,53 +24,30 @@ public class DialogueManager : MonoBehaviour
     {
         // GoToNode(startNodeId);
     }
-
-    void Awake()
-    {
-        
-      
-        OnDialogueUpdated += dUI.UpdateUI;
-        OnDialogueEnded += dUI.Hide;
-      
-        gameObject.SetActive(false);
-    }
-
-    private void OnDestroy()
-    {
-        OnDialogueUpdated -= dUI.UpdateUI;
-        OnDialogueEnded -= dUI.Hide;
-    }
     
     public void StartDialogue(DialogueDataBase database, string startNodeId)
     {
         dataBase = database;
         GoToNode(startNodeId);
+
+        //Lock everything when dialogue started
+        GM.GameFreeze();
     }
 
+    private void EndDialogue()
+    {  
+        _currentDialogueNode = null; 
+        OnDialogueEnded?.Invoke();
+        
+        //Unlock everything when dialogue ended
+        GM.GameUnfreeze();
+    }
+    
     public void ReloadScene()
     {
         var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
-
-    private void EndDialogue()
-    {
-        if (cameraCon != null)
-        {
-            cameraCon.canLook = true;
-        }
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        
-        crosshair.SetActive(true);
-        
-        _currentDialogueNode = null;
-        OnDialogueEnded?.Invoke();
-        
-        
-    }
-    
 
     private bool IsChoiceAvailable(DialogueChoice choice)
     {
@@ -135,11 +112,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        //GoToNode(choice.NextNodeId);
-        
-        string dialogueText = ProcessText(_currentDialogueNode.DialogueText);
-        var filteredChoices = FilterChoices(_currentDialogueNode.Choices);
-        dUI?.UpdateUI(_currentDialogueNode.SpeakerName, dialogueText, filteredChoices);
+        GoToNode(choice.NextNodeId);
     }
 
     public void GoToNode(string nodeId)
@@ -151,32 +124,8 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
-        var text = ProcessText(_currentDialogueNode.DialogueText);
+        
         var filtered = FilterChoices(_currentDialogueNode.Choices);
-
-        //Open the UI panel
-        dUI.gameObject.SetActive(true);
-
-        if (cameraCon != null)
-        {
-            cameraCon.canLook = false;
-            crosshair.SetActive(false);
-        }
-        
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        
-        OnDialogueUpdated?.Invoke(_currentDialogueNode.SpeakerName, text, filtered);
-    }
-
-    private string ProcessText(string text)
-    {
-        if (player == null)
-        {
-            return text;
-        }
-
-        return text.Replace("{hp}", player.playerHealth.ToString()).Replace("{money}", player.moneyCount.ToString());
+        OnDialogueUpdated?.Invoke(_currentDialogueNode.SpeakerName, _currentDialogueNode.DialogueText, filtered);
     }
 }
