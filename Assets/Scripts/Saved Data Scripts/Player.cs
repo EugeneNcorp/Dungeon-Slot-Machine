@@ -9,10 +9,7 @@ public class Player : MonoBehaviour
 
   public FlagManager flagManager;
 
-  void Update()
-  {
-    UpdateFlag();
-  }
+  
   public PlayerData ToData()
   {
     return new PlayerData
@@ -27,46 +24,20 @@ public class Player : MonoBehaviour
 
   public void FromData(PlayerData data)
   {
-    CharacterController cc = GetComponent<CharacterController>();
-
-    if (cc != null)
-    {
-      cc.enabled = false;
-    }
-    
     playerName = data.name;
     playerHealth = data.health;
     playerLevel = data.level;
     transform.position = data.playerPos;
     moneyCount = data.money;
-    
-    if (cc != null)
-    {
-      cc.enabled = true;
-    }
   }
 
   public void AddMoney(int amount)
   {
     moneyCount += amount;
-    Debug.Log($"Current Money Amount: {moneyCount}");
   }
   
   public void AddHealth(int amount)
   {
     playerHealth += amount;
-    Debug.Log($"Current Health Amount: {playerHealth}");
-  }
-
-  private void UpdateFlag()
-  {
-    if (moneyCount >= 5)
-    {
-      flagManager.AddFlag("haveMoney");
-    }
-    else
-    {
-      flagManager.RemoveFlag("haveMoney");
-    }
   }
 }

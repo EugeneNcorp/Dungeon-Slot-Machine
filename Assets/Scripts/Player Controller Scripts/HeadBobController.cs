@@ -22,15 +22,12 @@ public class HeadBobController : MonoBehaviour
     }
     void Update()
     {
+        ResetPosition();
         if (!enable)
         {
             return;
         }
-
         CheckMotion();
-        ResetPosition();
- 
-
     }
 
     private void CheckMotion()

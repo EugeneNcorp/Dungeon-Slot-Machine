@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DialogueUI : MonoBehaviour
 {
    public DialogueManager DM;
+   public GameObject dPanel;
    public TextMeshProUGUI SpeakerTextDisplay;
    public TextMeshProUGUI DialogueTextDisplay;
    public List<Button> Buttons;
@@ -33,13 +34,12 @@ public class DialogueUI : MonoBehaviour
 
    public void Hide()
    {
-      gameObject.SetActive(false);
+      dPanel.SetActive(false);
    }
 
    public void UpdateUI(string speaker, string dialogue, List<DialogueChoice> choices)
    {
-      
-      
+      dPanel.SetActive(true);
       
       SpeakerTextDisplay.text = speaker;
       DialogueTextDisplay.text = dialogue;

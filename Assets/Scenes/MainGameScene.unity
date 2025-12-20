@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 73696041}
   - component: {fileID: 73696040}
   - component: {fileID: 73696039}
+  - component: {fileID: 73696043}
   m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
@@ -612,6 +613,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &73696043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73696038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4386a36c78ca0789ee309b622b7a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueUI
+  DM: {fileID: 2017888382}
+  dPanel: {fileID: 1758747606}
+  SpeakerTextDisplay: {fileID: 127337372}
+  DialogueTextDisplay: {fileID: 1235805838}
+  Buttons:
+  - {fileID: 64216776}
+  - {fileID: 219708720}
+  - {fileID: 1747630550}
+  - {fileID: 641759290}
+  - {fileID: 759579494}
+  - {fileID: 1480306270}
+  ButtonLabels:
+  - {fileID: 1040852172}
+  - {fileID: 683426235}
+  - {fileID: 2003339584}
+  - {fileID: 588020557}
+  - {fileID: 228301892}
+  - {fileID: 1376487936}
 --- !u!1001 &95958433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,7 +731,7 @@ GameObject:
   - component: {fileID: 110496126}
   - component: {fileID: 110496125}
   m_Layer: 0
-  m_Name: '@SaveManager'
+  m_Name: '@GameManager'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -719,6 +750,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 2090354235}
+  cc: {fileID: 2090354231}
+  camRotate: {fileID: 330585548}
+  headBob: {fileID: 2090354234}
+  crosshair: {fileID: 565678565}
 --- !u!4 &110496126
 Transform:
   m_ObjectHideFlags: 0
@@ -5604,52 +5639,6 @@ PrefabInstance:
       addedObject: {fileID: 1121277360}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 555f892913b6d9a41b5b01bfa52217e9, type: 3}
---- !u!1 &1713459791
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1713459793}
-  - component: {fileID: 1713459792}
-  m_Layer: 0
-  m_Name: DeathManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1713459792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713459791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 617ca7922a755cf42bcca488d6b74cde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeathManager
-  player: {fileID: 2090354235}
-  DM: {fileID: 2017888382}
---- !u!4 &1713459793
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713459791}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.15878, y: 0.56625, z: -18.59783}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714652397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,12 +5915,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758747606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a4386a36c78ca0789ee309b622b7a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueUI
   DM: {fileID: 0}
+  dPanel: {fileID: 0}
   SpeakerTextDisplay: {fileID: 127337372}
   DialogueTextDisplay: {fileID: 1235805838}
   Buttons:
@@ -6574,11 +6564,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
   dataBase: {fileID: 0}
   flagManager: {fileID: 2017888381}
-  startNodeId: 
   player: {fileID: 2090354235}
-  dUI: {fileID: 1758747608}
-  cameraCon: {fileID: 330585548}
-  crosshair: {fileID: 565678565}
+  GM: {fileID: 110496125}
+  startNodeId: 
 --- !u!4 &2017888383
 Transform:
   m_ObjectHideFlags: 0
@@ -6962,4 +6950,3 @@ SceneRoots:
   - {fileID: 1839423754684955355}
   - {fileID: 2017888383}
   - {fileID: 73696042}
-  - {fileID: 1713459793}
