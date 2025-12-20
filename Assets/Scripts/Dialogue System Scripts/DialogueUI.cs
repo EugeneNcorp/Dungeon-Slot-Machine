@@ -46,6 +46,9 @@ public class DialogueUI : MonoBehaviour
 
       for (int i = 0; i < Buttons.Count; i++)
       {
+         //Remove buttons click listener after pressing it
+         Buttons[i].onClick.RemoveAllListeners();
+         
          if (i < choices.Count)
          {
             Buttons[i].gameObject.SetActive(true);
