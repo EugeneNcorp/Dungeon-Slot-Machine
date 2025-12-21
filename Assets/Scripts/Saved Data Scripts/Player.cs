@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
   void Awake()
   {
+    //Health and health bar settings
     currentHealth = maxHealth;
     healthBar.SetMaxHealth(maxHealth);
   }
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
   {
     return new PlayerData
     {
+      //data that would be saved
       name = playerName,
       health = currentHealth,
       level = playerLevel,
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
 
   public void FromData(PlayerData data)
   {
+    //data that would be loaded
     playerName = data.name;
     currentHealth = data.health;
     playerLevel = data.level;
@@ -41,11 +44,24 @@ public class Player : MonoBehaviour
   public void AddMoney(int amount)
   {
     moneyCount += amount;
+     StatusFlagGiver("haveMoney", moneyCount, 5);
   }
   
   public void AddHealth(int amount)
   {
     currentHealth += amount;
     healthBar.SetHealth(currentHealth);
+  }
+
+  public void StatusFlagGiver(string givenFlag, int statusVar, int threshold)
+  {
+    if (statusVar > threshold)
+    {
+      flagManager.AddFlag(givenFlag);
+    }
+    else
+    {
+      flagManager.RemoveFlag(givenFlag);
+    }
   }
 }

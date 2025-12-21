@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 4890006}
   - component: {fileID: 4890010}
   - component: {fileID: 4890009}
-  - component: {fileID: 4890008}
   - component: {fileID: 4890007}
   - component: {fileID: 4890011}
   m_Layer: 0
@@ -149,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 4890005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.49, z: 0}
+  m_LocalPosition: {x: 0, y: -0.49, z: 6.53}
   m_LocalScale: {x: 2.872, y: 4.713877, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -175,28 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041c62f03e8f0436f90dc0dd65f0e05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteBillboard
---- !u!64 &4890008
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890005}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4890009
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3418,7 +3395,7 @@ Transform:
   m_GameObject: {fileID: 844386212}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.91, z: -16.38}
+  m_LocalPosition: {x: 0, y: 2.91, z: -22.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4519,8 +4496,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1298240448}
-  - component: {fileID: 1298240449}
   - component: {fileID: 1298240450}
+  - component: {fileID: 1298240451}
   m_Layer: 0
   m_Name: //GameControl
   m_TagString: Untagged
@@ -4537,13 +4514,33 @@ Transform:
   m_GameObject: {fileID: 1298240447}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.014375179, y: 0.10012991, z: -0.016403198}
+  m_LocalPosition: {x: -0.081, y: 0, z: 0}
   m_LocalScale: {x: 0.3481894, y: 0.21213959, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4890006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1298240449
+--- !u!114 &1298240450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298240447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccc1f224ab3f387fa3d46f9475abe8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MachineControl
+  rows:
+  - {fileID: 579103091}
+  - {fileID: 815085580}
+  - {fileID: 251505564}
+  Handle1: {fileID: 486185526}
+  Handle2: {fileID: 778713708}
+  player: {fileID: 2090354235}
+  coin: {fileID: 5194771291961501512, guid: 49eede9008d9c4183a6100e100961e58, type: 3}
+--- !u!61 &1298240451
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4577,7 +4574,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.08687037, y: -0.5424416}
+  m_Offset: {x: 0.17783958, y: -0.12112951}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4587,28 +4584,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.3134756, y: 4.5111103}
+  m_Size: {x: 3.2031722, y: 4.469103}
   m_EdgeRadius: 0
---- !u!114 &1298240450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298240447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ccc1f224ab3f387fa3d46f9475abe8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MachineControl
-  rows:
-  - {fileID: 579103091}
-  - {fileID: 815085580}
-  - {fileID: 251505564}
-  Handle1: {fileID: 486185526}
-  Handle2: {fileID: 778713708}
-  player: {fileID: 2090354235}
-  coin: {fileID: 5194771291961501512, guid: 49eede9008d9c4183a6100e100961e58, type: 3}
 --- !u!1 &1298779722
 GameObject:
   m_ObjectHideFlags: 0
