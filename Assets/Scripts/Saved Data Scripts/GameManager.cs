@@ -22,7 +22,7 @@ using UnityEngine.SceneManagement;
                 LoadGame();
             }
             
-            if (player.playerHealth <= 0)
+            if (player.currentHealth <= 0)
             { 
                 ReloadScene();
             }
