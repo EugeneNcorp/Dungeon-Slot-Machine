@@ -50,7 +50,8 @@ public class Player : MonoBehaviour
   public void AddHealth(int amount)
   {
     currentHealth += amount;
-    healthBar.SetHealth(currentHealth);
+    
+    healthBar.SetTargetHealth(currentHealth);
   }
 
   public void StatusFlagGiver(string givenFlag, int statusVar, int threshold)

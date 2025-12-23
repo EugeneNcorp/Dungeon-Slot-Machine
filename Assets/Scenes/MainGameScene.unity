@@ -917,7 +917,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 126.4114, y: 121.0067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136128499
 MonoBehaviour:
@@ -4574,7 +4574,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.17783958, y: -0.12112951}
+  m_Offset: {x: 0.17783952, y: 0.39604014}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4584,7 +4584,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.2031722, y: 4.469103}
+  m_Size: {x: 3.2031722, y: 3.4347634}
   m_EdgeRadius: 0
 --- !u!1 &1298779722
 GameObject:
@@ -5556,6 +5556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
   slider: {fileID: 1520000132}
+  smoothSpeed: 7
 --- !u!1 &1527406585
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,16 +67,6 @@ MonoBehaviour:
     - haveMoney
     GrantFlags:
     - isEducated
-  - ChoiceText: '"Check the amount of Health and Money"'
-    NextNodeId: HubHealer_Node8
-    ReloadScene: 0
-    CloseDialogue: 0
-    Health: 0
-    Money: 0
-    RequiredFlags: []
-    ForbiddenFlags: []
-    GrantFlags:
-    - isEducated
   - ChoiceText: '"Leave"'
     NextNodeId: 
     ReloadScene: 0
