@@ -3413,8 +3413,9 @@ GameObject:
   - component: {fileID: 894910860}
   - component: {fileID: 894910863}
   - component: {fileID: 894910862}
-  - component: {fileID: 894910861}
   - component: {fileID: 894910864}
+  - component: {fileID: 894910866}
+  - component: {fileID: 894910865}
   m_Layer: 0
   m_Name: EnemySkeletonGFX
   m_TagString: Untagged
@@ -3437,28 +3438,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 267220331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &894910861
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894910859}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &894910862
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3527,6 +3506,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041c62f03e8f0436f90dc0dd65f0e05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteBillboard
+--- !u!65 &894910865
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894910859}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 6.1232336e-17}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &894910866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894910859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a35cf6087c5f2b7519f4bed258391194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NpcDialogeStarter
+  DM: {fileID: 2017888382}
+  DDB: {fileID: 11400000, guid: 087b950f79fa3b1c18fccf1a2cac2b47, type: 2}
+  startNodeId: HubSkeleton_Node1
 --- !u!4 &1004429181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3941422026451017908, guid: c14c94f4c1c004c4db9a29d80a1ef822, type: 3}

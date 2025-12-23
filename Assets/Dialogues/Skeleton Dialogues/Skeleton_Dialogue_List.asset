@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddf2e0c0d731f80d99246a013685f01, type: 3}
+  m_Name: Skeleton_Dialogue_List
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueDataBase
+  Nodes:
+  - {fileID: 11400000, guid: a0ffa1408076c053487338bdbfd61abe, type: 2}
+  - {fileID: 11400000, guid: 60ae207100ecfafc3876d8c9c994422d, type: 2}
+  - {fileID: 11400000, guid: 5dd13843e7f82af9d891cad7f00bd6e1, type: 2}
+  - {fileID: 11400000, guid: c5936bc47e8433a0a92bbe1be4f97cb5, type: 2}
+  - {fileID: 11400000, guid: f4cc225ecda30e3409f2a8fa5ce2a36a, type: 2}
